@@ -1,0 +1,215 @@
+// App 组件样式
+
+.app-layout {
+  min-height: 100vh;
+  
+  .ant-layout-header {
+    padding: 0;
+    height: 64px;
+    line-height: 64px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    position: relative;
+    z-index: 10;
+  }
+  
+  .ant-layout-sider {
+    background: #fff;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.06);
+    
+    .ant-layout-sider-trigger {
+      background: #fff;
+      color: rgba(0, 0, 0, 0.65);
+      border-top: 1px solid #f0f0f0;
+      
+      &:hover {
+        background: #f5f5f5;
+        color: rgba(0, 0, 0, 0.85);
+      }
+    }
+  }
+  
+  .site-layout {
+    background: #f0f2f5;
+    
+    .site-layout-content {
+      margin: 0;
+      padding: 24px;
+      min-height: calc(100vh - 64px);
+      background: #f0f2f5;
+      overflow-x: auto;
+    }
+  }
+}
+
+// 页面容器样式
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+  
+  @include mobile-only {
+    padding: 0 12px;
+  }
+}
+
+// 卡片样式增强
+.ant-card {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border: 1px solid #f0f0f0;
+  
+  .ant-card-head {
+    border-bottom: 1px solid #f0f0f0;
+    
+    .ant-card-head-title {
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+    }
+  }
+  
+  .ant-card-body {
+    padding: 24px;
+    
+    @include mobile-only {
+      padding: 16px;
+    }
+  }
+}
+
+// 按钮样式增强
+.ant-btn {
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// 菜单样式增强
+.ant-menu {
+  border-right: none;
+  
+  .ant-menu-item {
+    margin: 4px 8px;
+    border-radius: 6px;
+    height: 40px;
+    line-height: 40px;
+    
+    &:hover {
+      background-color: rgba(24, 144, 255, 0.06);
+    }
+    
+    &.ant-menu-item-selected {
+      background-color: rgba(24, 144, 255, 0.1);
+      color: $primary-color;
+      font-weight: 600;
+      
+      &::after {
+        display: none;
+      }
+    }
+  }
+  
+  .ant-menu-submenu {
+    .ant-menu-submenu-title {
+      margin: 4px 8px;
+      border-radius: 6px;
+      height: 40px;
+      line-height: 40px;
+      
+      &:hover {
+        background-color: rgba(24, 144, 255, 0.06);
+      }
+    }
+  }
+}
+
+// 响应式布局
+@include mobile-only {
+  .app-layout {
+    .ant-layout-sider {
+      position: fixed !important;
+      height: 100vh;
+      z-index: 999;
+      
+      &.ant-layout-sider-collapsed {
+        margin-left: -200px;
+      }
+    }
+    
+    .site-layout {
+      margin-left: 0 !important;
+      
+      .site-layout-content {
+        padding: 16px;
+      }
+    }
+  }
+}
+
+// 加载状态
+.loading-container {
+  @include flex-center;
+  min-height: 200px;
+  
+  .loading-spinner {
+    width: 32px;
+    height: 32px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid $primary-color;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+// 错误状态
+.error-container {
+  @include flex-center;
+  flex-direction: column;
+  min-height: 200px;
+  color: $error-color;
+  
+  .error-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+  }
+  
+  .error-message {
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+}
+
+// 空状态
+.empty-container {
+  @include flex-center;
+  flex-direction: column;
+  min-height: 200px;
+  color: rgba(0, 0, 0, 0.45);
+  
+  .empty-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+  }
+  
+  .empty-message {
+    font-size: 14px;
+  }
+}
